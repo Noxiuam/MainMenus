@@ -1,8 +1,5 @@
 # MainMenus
-A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that brings your favorite client's main menu's to Forge!
-
-## Download
-You can download the mod [here](https://github.com/Noxiuam/MainMenus/releases/latest)!
+A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that brings your favorite client's main menu to Forge!
 
 ## Supported Menus
 <details>
