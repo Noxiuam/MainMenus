@@ -7,7 +7,6 @@
     "maxShiftBy": 5
   },
   "client": [
-    "GuiMainMenuMixin",
     "GuiMultiplayerMixin",
     "MinecraftMixin"
   ],
