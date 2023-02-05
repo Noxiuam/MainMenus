@@ -16,8 +16,8 @@ public class Settings extends Config {
     @Dropdown(name = "Main Menu", subcategory = "General", options = {
             "Vanilla", // 0
             "Lunar 2019", // 1
-            "CheatBreaker 2017", // 2
-            "CheatBreaker 2018" // 3
+            "CheatBreaker 2018", // 2
+            "CheatBreaker 2017" // 3
     })
     public int mainMenu = 0;
 
@@ -34,9 +34,9 @@ public class Settings extends Config {
                 case 1:
                     return new LunarClientMainMenuBase();
                 case 2:
-                    return new LegacyCBMainMenuBase();
-                case 3:
                     return new ModernCBMainMenuBase();
+                case 3:
+                    return new LegacyCBMainMenuBase();
 
             }
         }
