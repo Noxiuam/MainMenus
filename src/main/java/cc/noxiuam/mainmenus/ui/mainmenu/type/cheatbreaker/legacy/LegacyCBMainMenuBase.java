@@ -74,9 +74,17 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
             String accountName = account.getDisplayName();
 
             LegacyAccountButton legacyAccountButton = new LegacyAccountButton(account);
-            legacyAccountButton.setElementSize(
-                    this.getScaledWidth() - 200, n * 25, 130, 25
-            );
+
+            if (accountName.equals(this.mc.getSession().getUsername())) {
+                legacyAccountButton.setElementSize(
+                        this.getScaledWidth() - 200, 0, 130, 25
+                );
+            } else {
+                legacyAccountButton.setElementSize(
+                        this.getScaledWidth() - 200, n * 25, 130, 25
+                );
+            }
+
 
             this.accountButtons.add(legacyAccountButton);
 
