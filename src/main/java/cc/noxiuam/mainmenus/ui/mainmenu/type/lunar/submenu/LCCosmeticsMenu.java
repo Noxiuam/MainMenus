@@ -1,9 +1,10 @@
 package cc.noxiuam.mainmenus.ui.mainmenu.type.lunar.submenu;
 
 import cc.noxiuam.mainmenus.ui.data.FontRegistry;
-import cc.noxiuam.mainmenus.ui.mainmenu.type.lunar.LunarClientMainMenuBase;
 import cc.noxiuam.mainmenus.ui.mainmenu.shared.element.button.GradientTextButton;
+import cc.noxiuam.mainmenus.ui.mainmenu.type.lunar.LunarClientMainMenuBase;
 import cc.noxiuam.mainmenus.ui.util.RenderUtil;
+import org.lwjgl.input.Keyboard;
 
 public class LCCosmeticsMenu extends LunarClientMainMenuBase {
 
@@ -32,6 +33,13 @@ public class LCCosmeticsMenu extends LunarClientMainMenuBase {
                 -6381922
         );
 
+    }
+
+    @Override
+    protected void keyTyped(char c, int n) {
+        if (n == Keyboard.KEY_ESCAPE) {
+            this.mc.displayGuiScreen(new LunarClientMainMenuBase());
+        }
     }
 
     @Override

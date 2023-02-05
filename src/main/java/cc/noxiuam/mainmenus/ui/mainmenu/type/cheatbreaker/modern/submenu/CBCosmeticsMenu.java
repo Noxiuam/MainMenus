@@ -4,6 +4,7 @@ import cc.noxiuam.mainmenus.ui.data.FontRegistry;
 import cc.noxiuam.mainmenus.ui.mainmenu.shared.element.button.GradientTextButton;
 import cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.modern.ModernCBMainMenuBase;
 import cc.noxiuam.mainmenus.ui.util.RenderUtil;
+import org.lwjgl.input.Keyboard;
 
 public class CBCosmeticsMenu extends ModernCBMainMenuBase {
 
@@ -32,6 +33,13 @@ public class CBCosmeticsMenu extends ModernCBMainMenuBase {
                 -6381922
         );
 
+    }
+
+    @Override
+    protected void keyTyped(char c, int n) {
+        if (n == Keyboard.KEY_ESCAPE) {
+            this.mc.displayGuiScreen(new ModernCBMainMenuBase());
+        }
     }
 
     @Override
