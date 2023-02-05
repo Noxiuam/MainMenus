@@ -1,6 +1,9 @@
 # MainMenus
 A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that brings your favorite client's main menu's to Forge!
 
+## Download
+You can download the mod [here](https://github.com/Noxiuam/MainMenus/releases/latest)!
+
 ## Supported Menus
 <details>
   <summary><strong>Lunar Client 2019</strong></summary>
