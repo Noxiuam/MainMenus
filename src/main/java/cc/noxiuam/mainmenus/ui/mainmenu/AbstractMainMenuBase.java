@@ -19,6 +19,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Session;
+import net.minecraftforge.fml.common.Loader;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Project;
@@ -47,6 +48,8 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
 
     public final File accountsFile =
             new File(System.getenv("APPDATA") + File.separator + ".minecraft" + File.separator + "launcher_accounts.json");
+
+    public final boolean isReplayModPresent = Loader.isModLoaded("replaymod");
 
     @Override
     public void initGui() {

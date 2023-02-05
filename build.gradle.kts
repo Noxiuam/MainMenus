@@ -71,8 +71,11 @@ dependencies {
         shade("cc.polyfrost:oneconfig-wrapper-launchwrapper:1.0.0-alpha+")
     }
 
+
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
+
+    implementation(files("../../thirdpartymods/replaymod-1.8.9-2.6.8.jar"))
 }
 
 tasks.processResources {
@@ -148,6 +151,7 @@ tasks {
                 )
             )
         }
+
         dependsOn(shadowJar)
         archiveClassifier.set("")
         enabled = false

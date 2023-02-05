@@ -9,6 +9,9 @@ import cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.legacy.element.LegacyM
 import cc.noxiuam.mainmenus.ui.mainmenu.util.PanoramaRegistry;
 import cc.noxiuam.mainmenus.ui.util.RenderUtil;
 import com.google.common.collect.ImmutableList;
+import com.replaymod.core.ReplayMod;
+import com.replaymod.replay.ReplayModReplay;
+import com.replaymod.replay.gui.screen.GuiReplayViewer;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiOptions;
@@ -28,11 +31,14 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
     private final ResourceLocation logoInner = new ResourceLocation("client/logo_inner.png");
 
     private final LegacyMainMenuButton optionsButton = new LegacyMainMenuButton("OPTIONS", false);
-    private final LegacyMainMenuButton forgeButton = new LegacyMainMenuButton("MODS", false);
     private final LegacyMainMenuButton languageButton = new LegacyMainMenuButton("LANGUAGE", false);
 
+    // Forge specific
+    private final LegacyMainMenuButton forgeButton = new LegacyMainMenuButton("MODS", false);
+    private final LegacyMainMenuButton replaysButton = new LegacyMainMenuButton("REPLAYS", false);
+
     private final List<LegacyMainMenuButton> topLeftButtons =
-            ImmutableList.of(this.optionsButton, this.languageButton, this.forgeButton);
+            ImmutableList.of(this.optionsButton, this.languageButton, this.forgeButton, this.replaysButton);
 
     private final LegacyMainMenuButton singlePlayerButton = new LegacyMainMenuButton(I18n.format("menu.singleplayer"), true);
     private final LegacyMainMenuButton multiPlayerButton = new LegacyMainMenuButton(I18n.format("menu.multiplayer"), true);
@@ -196,6 +202,9 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         } else if (this.forgeButton.isMouseInside(x, y)) {
             this.playClick();
             this.mc.displayGuiScreen(new GuiModList(this));
+        } else if (this.replaysButton.isMouseInside(x, y)) {
+            this.playClick();
+            this.mc.displayGuiScreen(new GuiReplayViewer(new ReplayModReplay(ReplayMod.instance)).toMinecraft());
         } else if (this.exitButton.isMouseInside(x, y)) {
             this.playClick();
             this.mc.shutdown();

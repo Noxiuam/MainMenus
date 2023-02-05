@@ -13,11 +13,15 @@ import cc.noxiuam.mainmenus.ui.mainmenu.type.lunar.submenu.LCCosmeticsMenu;
 import cc.noxiuam.mainmenus.ui.mainmenu.util.PanoramaRegistry;
 import cc.noxiuam.mainmenus.ui.util.RenderUtil;
 import com.google.common.collect.ImmutableList;
+import com.replaymod.core.ReplayMod;
+import com.replaymod.replay.ReplayModReplay;
+import com.replaymod.replay.gui.screen.GuiReplayViewer;
 import lombok.SneakyThrows;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.GuiModList;
+import net.minecraftforge.fml.common.Loader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +49,6 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
 
     public AccountButton accountButton;
 
-    private GuiScreen replaysScreen;
-
     @Override
     public void initGui() {
         super.initGui();
@@ -54,7 +56,7 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
         this.bottomButtons.clear();
         this.bottomButtons.add(this.forgeButton);
         this.bottomButtons.add(this.languageButton);
-        //this.bottomButtons.add(this.replaysButton);
+        this.bottomButtons.add(this.replaysButton);
 
         this.titlePanoramaPaths = PanoramaRegistry.LUNAR;
 
@@ -105,7 +107,7 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
                 continue;
             }
 
-            if (button == this.replaysButton) {
+            if (button == this.replaysButton && !this.isReplayModPresent) {
                 continue;
             }
 
@@ -143,12 +145,12 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
         } else if (this.forgeButton.isMouseInside(x, y)) {
             this.playClick();
             this.mc.displayGuiScreen(new GuiModList(this));
-        }/* else if (this.replaysButton.isMouseInside(x, y)) {
+        } else if (this.replaysButton.isMouseInside(x, y)) {
             if (Loader.isModLoaded("replaymod")) {
                 this.playClick();
-                this.mc.displayGuiScreen(this.replaysScreen);
+                this.mc.displayGuiScreen(new GuiReplayViewer(new ReplayModReplay(ReplayMod.instance)).toMinecraft());
             }
-        }*/
+        }
     }
 
     @Override
@@ -161,35 +163,28 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
     @SneakyThrows
     protected void updateSizes() {
 
-//        boolean replayModPresent = Loader.isModLoaded("replaymod");
-
-//        if (!replayModPresent) {
-//            this.bottomButtons.remove(this.replaysButton);
-//        }
-//
-//        if (replayModPresent) {
-//            Class<GuiScreen> gui = (Class<GuiScreen>) Class.forName("com.replaymod.replay.gui.screen.GuiReplayViewer");
-//            this.replaysScreen = gui.newInstance();
-//        }
+        if (!this.isReplayModPresent) {
+            this.bottomButtons.remove(this.replaysButton);
+        }
 
         this.closeButton.setElementSize(this.getScaledWidth() - 30.0f, 11.0f, 23.0f, 17.0f);
 
         float bottomHorizontalPosition = -this.bottomButtons.size() * 31.0f / 2.0f + 2.5f;
         for (GradientTextButton button : this.bottomButtons) {
-//            if (!replayModPresent && button == this.replaysButton) {
-//                continue;
-//            }
+            if (!this.isReplayModPresent && button == this.replaysButton) {
+                continue;
+            }
             button.setElementSize(this.getScaledWidth() / 2.0f + bottomHorizontalPosition, this.getScaledHeight() - 17.0f, 26.0f, 18.0f);
             bottomHorizontalPosition += 30;
         }
 
         this.forgeButton.setShowBackground(false);
 
-//        if (replayModPresent) {
-//            this.replaysButton.setIcon(new ResourceLocation("replaymod", "logo_button.png"));
-//            this.replaysButton.setElementSize(this.getScaledWidth() / 2.0f + 15.0f, this.getScaledHeight() - 17.0f, 26.0f, 18.0f);
-//            this.replaysButton.setShowBackground(false);
-//        }
+        if (this.isReplayModPresent) {
+            this.replaysButton.setIcon(new ResourceLocation("replaymod", "logo_button.png"));
+            this.replaysButton.setElementSize(this.getScaledWidth() / 2.0f + 15.0f, this.getScaledHeight() - 17.0f, 26.0f, 18.0f);
+            this.replaysButton.setShowBackground(false);
+        }
 
         this.optionsButton.setElementSize(114.0f, 10.0f, 42.0f, 20.0f);
         this.cosmeticsButton.setElementSize(157.0f, 10.0f, 48.0f, 20.0f);
