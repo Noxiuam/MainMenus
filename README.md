@@ -21,3 +21,7 @@ A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that brings your f
 ![2023-02-04_20 15 59](https://user-images.githubusercontent.com/96212795/216796615-82d1daa0-eba1-41be-a2f5-f687ce087df8.png)
 
 </details>
+
+## Credits
+- Moonsworth, LLC for the animated Lunar Client logo & 2019 art assets.
+- CheatBreaker, LLC for the CheatBreaker Main Menu designs, elements & 2017-2018 art assets.
