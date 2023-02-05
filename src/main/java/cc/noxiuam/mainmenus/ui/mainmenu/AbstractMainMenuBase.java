@@ -46,8 +46,7 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
 
     public final List<Account> accounts = new ArrayList<>();
 
-    public final File accountsFile =
-            new File(System.getenv("APPDATA") + File.separator + ".minecraft" + File.separator + "launcher_accounts.json");
+    public File accountsFile = new File(this.mc.mcDataDir + File.separator + "launcher_accounts.json");
 
     public final boolean isReplayModPresent = Loader.isModLoaded("replaymod");
 
