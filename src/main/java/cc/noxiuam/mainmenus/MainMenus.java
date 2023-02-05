@@ -14,7 +14,7 @@ public class MainMenus {
     public static final String VERSION = "@VER@";
     public static Settings config;
 
-    public static final String BRANCH = "private";
+    public static final String BRANCH = "master";
 
     public AvatarUtil avatarUtil;
 
