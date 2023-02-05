@@ -2,15 +2,15 @@
   {
     "modid": "${id}",
     "name": "${name}",
-    "description": "",
+    "description": "Brings your favorite client's main menu's to Forge!",
     "version": "${version}",
     "mcversion": "1.8.9",
     "url": "",
     "updateUrl": "",
     "authorList": [
-      "Your Name"
+      "Noxiuam"
     ],
-    "credits": "",
+    "credits": "Moonsworth, LLC for Lunar 2019 main menu. CheatBreaker, LLC for the both CB menus.",
     "logoFile": "",
     "screenshots": [],
     "dependencies": []
