@@ -16,6 +16,7 @@ import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.GuiModList;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
     private final ResourceLocation logoInner = new ResourceLocation("client/logo_inner.png");
 
     private final LegacyMainMenuButton optionsButton = new LegacyMainMenuButton("OPTIONS", false);
-
+    private final LegacyMainMenuButton forgeButton = new LegacyMainMenuButton("MODS", false);
     private final LegacyMainMenuButton languageButton = new LegacyMainMenuButton("LANGUAGE", false);
 
     private final List<LegacyMainMenuButton> topLeftButtons =
-            ImmutableList.of(this.optionsButton, this.languageButton);
+            ImmutableList.of(this.optionsButton, this.languageButton, this.forgeButton);
 
     private final LegacyMainMenuButton singlePlayerButton = new LegacyMainMenuButton(I18n.format("menu.singleplayer"), true);
     private final LegacyMainMenuButton multiPlayerButton = new LegacyMainMenuButton(I18n.format("menu.multiplayer"), true);
@@ -192,6 +193,9 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         } else if (this.languageButton.isMouseInside(x, y)) {
             this.playClick();
             this.mc.displayGuiScreen(new GuiLanguage(this, this.mc.gameSettings, this.mc.getLanguageManager()));
+        } else if (this.forgeButton.isMouseInside(x, y)) {
+            this.playClick();
+            this.mc.displayGuiScreen(new GuiModList(this));
         } else if (this.exitButton.isMouseInside(x, y)) {
             this.playClick();
             this.mc.shutdown();
