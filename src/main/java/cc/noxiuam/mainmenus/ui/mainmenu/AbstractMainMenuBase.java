@@ -1,6 +1,7 @@
 package cc.noxiuam.mainmenus.ui.mainmenu;
 
 import cc.noxiuam.mainmenus.ui.AbstractGui;
+import cc.noxiuam.mainmenus.ui.data.FontRegistry;
 import cc.noxiuam.mainmenus.ui.mainmenu.data.Account;
 import cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.legacy.LegacyCBMainMenuBase;
 import com.google.gson.JsonElement;
@@ -39,6 +40,8 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
     private static int rotationAngle = 4100;
 
     public String activeAccountId = "";
+
+    public float accountButtonWidth;
 
     public final List<Account> accounts = new ArrayList<>();
 
@@ -230,6 +233,7 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
             }
 
             this.accounts.clear();
+            this.accountButtonWidth = (float) FontRegistry.robotoRegular13px.getStringWidth(Minecraft.getMinecraft().getSession().getUsername());
 
             for (Map<String, String> account : accounts) {
 

@@ -6,10 +6,12 @@ import cc.noxiuam.mainmenus.ui.ScrollableElement;
 import cc.noxiuam.mainmenus.ui.data.FontRegistry;
 import cc.noxiuam.mainmenus.ui.fade.impl.ColorFade;
 import cc.noxiuam.mainmenus.ui.fade.impl.MinMaxFade;
+import cc.noxiuam.mainmenus.ui.font.CBFontRenderer;
 import cc.noxiuam.mainmenus.ui.mainmenu.data.Account;
 import cc.noxiuam.mainmenus.ui.mainmenu.shared.CommonCheatBreakerBase;
 import cc.noxiuam.mainmenus.ui.util.RenderUtil;
 import lombok.Setter;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -70,10 +72,18 @@ public class AccountButton extends AbstractElement {
                 this.bottomGradient.getColor(mouseInside).getRGB()
         );
 
+        CBFontRenderer fontRenderer;
+
+        if (MainMenus.config.mainMenu == 2) {
+            fontRenderer = FontRegistry.robotoRegular13px;
+        } else {
+            fontRenderer = FontRegistry.robotoMedium13px;
+        }
+
         float xOffset = 6.0f;
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         RenderUtil.renderIcon(this.avatarIcon, xOffset, this.xPosition + 4.0f, this.yPosition + this.modifiedHeight / 2.0f - xOffset);
-        FontRegistry.robotoMedium13px.drawString(this.displayName, this.xPosition + 22.0f, this.yPosition + 4.5f, -1342177281);
+        fontRenderer.drawString(this.displayName, this.xPosition + 22.0f, this.yPosition + 4.5f, -1342177281);
 
         float heightFadeAmount = this.dropFade.inOutFade(this.isMouseInside(x, y) && hovering);
         if (this.dropFade.isZeroOrLess()) {
@@ -139,7 +149,8 @@ public class AccountButton extends AbstractElement {
                 RenderUtil.renderIcon(account.getHeadIcon(), xOffset, this.xPosition + 4.0f, accountHeight + 8.0f - xOffset);
 
                 // account username
-                FontRegistry.robotoMedium13px.drawString(
+
+                fontRenderer.drawString(
                         account.getDisplayName(),
                         this.xPosition + 22.0f,
                         accountHeight + 4.0f,
@@ -198,7 +209,14 @@ public class AccountButton extends AbstractElement {
                     this.setDisplayName(account.getDisplayName());
                     this.setAvatarIcon(account.getHeadIcon());
 
-                    this.mainMenuBase.login(account.getDisplayName());
+                    CBFontRenderer fontRenderer;
+                    if (MainMenus.config.mainMenu == 2) {
+                        fontRenderer = FontRegistry.robotoRegular13px;
+                    } else {
+                        fontRenderer = FontRegistry.robotoMedium13px;
+                    }
+
+                    this.mainMenuBase.accountButtonWidth = (float) fontRenderer.getStringWidth(Minecraft.getMinecraft().getSession().getUsername());
                 }
 
                 ++index;

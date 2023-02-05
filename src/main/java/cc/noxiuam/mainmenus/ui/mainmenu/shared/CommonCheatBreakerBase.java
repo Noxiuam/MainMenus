@@ -2,6 +2,7 @@ package cc.noxiuam.mainmenus.ui.mainmenu.shared;
 
 import cc.noxiuam.mainmenus.MainMenus;
 import cc.noxiuam.mainmenus.ui.data.FontRegistry;
+import cc.noxiuam.mainmenus.ui.font.CBFontRenderer;
 import cc.noxiuam.mainmenus.ui.mainmenu.AbstractMainMenuBase;
 import cc.noxiuam.mainmenus.ui.mainmenu.data.Account;
 import cc.noxiuam.mainmenus.ui.mainmenu.shared.element.account.AccountButton;
@@ -44,8 +45,6 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
 
     public AccountButton accountButton;
 
-    public float accountButtonWidth;
-
     private GuiScreen replaysScreen;
 
     @Override
@@ -59,13 +58,20 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
 
         this.titlePanoramaPaths = PanoramaRegistry.LUNAR;
 
-        this.accountButtonWidth = (float) FontRegistry.robotoMedium13px.getStringWidth(Minecraft.getMinecraft().getSession().getUsername());
+        CBFontRenderer fontRenderer;
+        if (MainMenus.config.mainMenu == 2) {
+            fontRenderer = FontRegistry.robotoRegular13px;
+        } else {
+            fontRenderer = FontRegistry.robotoMedium13px;
+        }
+
+        this.accountButtonWidth = (float) fontRenderer.getStringWidth(Minecraft.getMinecraft().getSession().getUsername());
 
         String username = Minecraft.getMinecraft().getSession().getUsername();
 
         for (Account account : this.accounts) {
             String accountUsername = account.getUsername();
-            this.accountButtonWidth = Math.max(this.accountButtonWidth, (float) FontRegistry.robotoMedium13px.getStringWidth(accountUsername));
+            this.accountButtonWidth = Math.max(this.accountButtonWidth, (float) fontRenderer.getStringWidth(accountUsername));
         }
 
         this.accountButton = new AccountButton(
