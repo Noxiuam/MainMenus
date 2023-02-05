@@ -18,10 +18,12 @@ import com.replaymod.replay.ReplayModReplay;
 import com.replaymod.replay.gui.screen.GuiReplayViewer;
 import lombok.SneakyThrows;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.*;
+import net.minecraft.client.gui.GuiLanguage;
+import net.minecraft.client.gui.GuiMultiplayer;
+import net.minecraft.client.gui.GuiOptions;
+import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.GuiModList;
-import net.minecraftforge.fml.common.Loader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,11 +147,9 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
         } else if (this.forgeButton.isMouseInside(x, y)) {
             this.playClick();
             this.mc.displayGuiScreen(new GuiModList(this));
-        } else if (this.replaysButton.isMouseInside(x, y)) {
-            if (Loader.isModLoaded("replaymod")) {
-                this.playClick();
-                this.mc.displayGuiScreen(new GuiReplayViewer(new ReplayModReplay(ReplayMod.instance)).toMinecraft());
-            }
+        } else if (this.replaysButton.isMouseInside(x, y) && this.isReplayModPresent) {
+            this.playClick();
+            this.mc.displayGuiScreen(new GuiReplayViewer(new ReplayModReplay(ReplayMod.instance)).toMinecraft());
         }
     }
 

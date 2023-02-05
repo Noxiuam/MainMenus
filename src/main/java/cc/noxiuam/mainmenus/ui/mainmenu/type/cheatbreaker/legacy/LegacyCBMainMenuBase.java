@@ -38,7 +38,7 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
     private final LegacyMainMenuButton replaysButton = new LegacyMainMenuButton("REPLAYS", false);
 
     private final List<LegacyMainMenuButton> topLeftButtons =
-            ImmutableList.of(this.optionsButton, this.languageButton, this.forgeButton, this.replaysButton);
+            ImmutableList.of(this.optionsButton, this.languageButton, this.forgeButton);
 
     private final LegacyMainMenuButton singlePlayerButton = new LegacyMainMenuButton(I18n.format("menu.singleplayer"), true);
     private final LegacyMainMenuButton multiPlayerButton = new LegacyMainMenuButton(I18n.format("menu.multiplayer"), true);
@@ -109,6 +109,10 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
 
         float topLeftButtonsXPosition = 44;
         for (LegacyMainMenuButton button : this.topLeftButtons) {
+            if (button == this.replaysButton && !this.isReplayModPresent) {
+                continue;
+            }
+
             button.setElementSize(topLeftButtonsXPosition, 0.5f, 50, 25);
             topLeftButtonsXPosition += 50;
         }
@@ -136,6 +140,10 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         this.multiPlayerButton.drawElementHover(x, y, true);
 
         for (LegacyMainMenuButton button : this.topLeftButtons) {
+            if (button == this.replaysButton && !this.isReplayModPresent) {
+                continue;
+            }
+
             button.drawElementHover(x, y, true);
         }
 
@@ -202,7 +210,7 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         } else if (this.forgeButton.isMouseInside(x, y)) {
             this.playClick();
             this.mc.displayGuiScreen(new GuiModList(this));
-        } else if (this.replaysButton.isMouseInside(x, y)) {
+        } else if (this.replaysButton.isMouseInside(x, y) && this.isReplayModPresent) {
             this.playClick();
             this.mc.displayGuiScreen(new GuiReplayViewer(new ReplayModReplay(ReplayMod.instance)).toMinecraft());
         } else if (this.exitButton.isMouseInside(x, y)) {
@@ -218,17 +226,8 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
                         && y < accountButton.getYPosition() + accountButton.getHeight()) {
                     if (!this.login(accountButton.getDisplayName()) || accountButton == this.accountButton) break;
 
-                    String currentName = this.accountButton.getDisplayName();
-                    ResourceLocation currentHeadIcon = this.accountButton.getHeadIcon();
-
                     this.accountButton.setDisplayName(accountButton.getDisplayName());
                     this.accountButton.setHeadIcon(accountButton.getHeadIcon());
-
-                    System.out.println(currentName);
-
-                    accountButton.setDisplayName(currentName);
-                    accountButton.setHeadIcon(currentHeadIcon);
-
                     break;
                 }
             }

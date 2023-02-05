@@ -75,7 +75,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
 
-    implementation(files("../../thirdpartymods/replaymod-1.8.9-2.6.8.jar"))
+    implementation(files("../../thirdparty/replaymod-1.8.9-2.6.8.jar"))
 }
 
 tasks.processResources {
