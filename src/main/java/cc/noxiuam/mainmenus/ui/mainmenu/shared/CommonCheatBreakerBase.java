@@ -2,7 +2,6 @@ package cc.noxiuam.mainmenus.ui.mainmenu.shared;
 
 import cc.noxiuam.mainmenus.MainMenus;
 import cc.noxiuam.mainmenus.ui.data.FontRegistry;
-import cc.noxiuam.mainmenus.ui.fade.impl.ColorFade;
 import cc.noxiuam.mainmenus.ui.mainmenu.AbstractMainMenuBase;
 import cc.noxiuam.mainmenus.ui.mainmenu.data.Account;
 import cc.noxiuam.mainmenus.ui.mainmenu.shared.element.account.AccountButton;
@@ -127,7 +126,7 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
             this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
         } else if (this.cosmeticsButton.isMouseInside(x, y)) {
             this.playClick();
-            if (MainMenus.config.mainMenu == 3) {
+            if (MainMenus.config.mainMenu == 2) {
                 this.mc.displayGuiScreen(new CBCosmeticsMenu());
             } else {
                 this.mc.displayGuiScreen(new LCCosmeticsMenu());
@@ -179,14 +178,10 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
         }
 
         this.forgeButton.setShowBackground(false);
-        this.forgeButton.setTopGradientColor(new ColorFade(this.forgeButton.getTopGradientColor().getStartColor(), 0x4FDFA86A));
-        this.forgeButton.setBottomGradientColor(new ColorFade(this.forgeButton.getTopGradientColor().getStartColor(), 0x4FBC8D5A));
 
 //        if (replayModPresent) {
 //            this.replaysButton.setIcon(new ResourceLocation("replaymod", "logo_button.png"));
 //            this.replaysButton.setElementSize(this.getScaledWidth() / 2.0f + 15.0f, this.getScaledHeight() - 17.0f, 26.0f, 18.0f);
-//            this.replaysButton.setTopGradientColor(new ColorFade(this.replaysButton.getTopGradientColor().getStartColor(), 0x4F0A699B));
-//            this.replaysButton.setBottomGradientColor(new ColorFade(this.replaysButton.getTopGradientColor().getStartColor(), 0x4F064466));
 //            this.replaysButton.setShowBackground(false);
 //        }
 

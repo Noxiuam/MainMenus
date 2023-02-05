@@ -93,7 +93,7 @@ public class GradientTextButton extends AbstractElement {
     protected void handleElementDraw(float x, float y, boolean hovering) {
         boolean mouseOver = hovering && this.isMouseInside(x, y);
 
-        if (!this.showBackground && MainMenus.config.mainMenu == 3 && !this.hasSet) {
+        if (!this.showBackground && MainMenus.config.mainMenu == 2 && !this.hasSet) {
             this.outlineColor = new ColorFade(0x4FFFFFFF, 0xAF50A05C);
             this.topGradientColor = new ColorFade(0x1A858585, 0x3F64B96E);
             this.bottomGradientColor = new ColorFade(0x1A858585, 0x3F55A562);

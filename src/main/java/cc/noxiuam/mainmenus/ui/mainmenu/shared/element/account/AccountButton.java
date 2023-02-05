@@ -44,7 +44,7 @@ public class AccountButton extends AbstractElement {
 
         this.scrollbar = new ScrollableElement(this);
 
-        if (MainMenus.config.mainMenu == 3) {
+        if (MainMenus.config.mainMenu == 2) {
             this.outline = new ColorFade(0x4FFFFFFF, 0xAF50A05C);
             this.topGradient = new ColorFade(0x1A858585, 0x3F64B96E);
             this.bottomGradient = new ColorFade(0x1A858585, 0x3F55A562);
