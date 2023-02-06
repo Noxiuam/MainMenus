@@ -378,9 +378,6 @@ gradle-app.setting
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 
-# Avoid ignoring ReplayMod
-!replaymod-1.8.9-2.6.8.jar
-
 # Avoid ignore Gradle wrappper properties
 !gradle-wrapper.properties
 
