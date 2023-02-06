@@ -1,5 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import cc.polyfrost.gradle.util.noServerRunConfigs
+import java.io.FileOutputStream
 
 plugins {
     kotlin("jvm")
@@ -155,5 +156,13 @@ tasks {
         dependsOn(shadowJar)
         archiveClassifier.set("")
         enabled = false
+    }
+    downloadReplayMod()
+}
+
+fun downloadReplayMod() {
+    val replayModPath = file("../../thirdparty/replaymod-1.8.9-2.6.8.jar");
+    uri("https://www.replaymod.com/download/download_new.php?version=1.8.9-2.6.8").toURL().openStream().use {
+        it.copyTo(FileOutputStream(replayModPath))
     }
 }
