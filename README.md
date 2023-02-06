@@ -23,5 +23,6 @@ A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that brings your f
 </details>
 
 ## Credits
+- ReplayMod for an unmodified copy of their mod to implement the Replays viewer.
 - Moonsworth, LLC for the animated Lunar Client logo & 2019 art assets.
 - CheatBreaker, LLC for the CheatBreaker Main Menu designs, elements & 2017-2018 art assets.
