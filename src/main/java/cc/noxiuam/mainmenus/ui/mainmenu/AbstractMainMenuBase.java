@@ -46,15 +46,24 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
 
     public final List<Account> accounts = new ArrayList<>();
 
-    public File accountsFile = new File(this.mc.mcDataDir + File.separator + "launcher_accounts.json");
+    public File accountsFile;
 
-    public final boolean isReplayModPresent = Loader.isModLoaded("replaymod");
+    public boolean isReplayModPresent = false;
 
     @Override
     public void initGui() {
         super.initGui();
 
-        this.loadAccounts();
+        try {
+            this.isReplayModPresent = Loader.isModLoaded("replaymod");
+            this.accountsFile = new File(this.mc.mcDataDir + File.separator + "launcher_accounts.json");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (this.accountsFile != null) {
+            this.loadAccounts();
+        }
 
         this.viewportTexture = new DynamicTexture(256, 256);
         this.backgroundTexture =
