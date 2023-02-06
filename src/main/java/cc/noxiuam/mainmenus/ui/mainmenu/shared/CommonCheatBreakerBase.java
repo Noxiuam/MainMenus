@@ -182,7 +182,7 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
 
         if (this.isReplayModPresent) {
             this.replaysButton.setIcon(new ResourceLocation("replaymod", "logo_button.png"));
-            this.replaysButton.setElementSize(this.getScaledWidth() / 2.0f + 15.0f, this.getScaledHeight() - 17.0f, 26.0f, 18.0f);
+            this.replaysButton.setElementSize(this.getScaledWidth() / 2.0f + 16f, this.getScaledHeight() - 17.0f, 26.0f, 18.0f);
             this.replaysButton.setShowBackground(false);
         }
 
