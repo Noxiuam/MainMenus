@@ -1,5 +1,5 @@
 # MainMenus
-A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that brings your favorite client's main menu to Forge!
+Brings your favorite client's main menu to Forge!
 
 ## Supported Menus
 <details>
