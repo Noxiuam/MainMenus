@@ -35,7 +35,7 @@ public class Settings extends Config {
     public Settings() {
         super(new Mod(MainMenus.NAME, ModType.UTIL_QOL), MainMenus.MODID + ".json");
         initialize();
-        addDependency("mainMenuScale", () -> customScale);
+        addDependency("mainMenuScale", "customScale");
     }
 
 }
