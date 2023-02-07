@@ -25,6 +25,9 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The original CheatBreaker main menu, from 2017.
+ */
 public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
 
     private final ResourceLocation logoOuter = new ResourceLocation("client/logo_outer.png");
@@ -55,6 +58,9 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
     private boolean showAccountList;
     private boolean hasHoveredOverAccountButton;
 
+    /**
+     * Initialize and setup all the buttons.
+     */
     @Override
     public void initGui() {
         super.initGui();
@@ -126,6 +132,12 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         }
     }
 
+    /**
+     * Differently drawn from the others, this should be split up for better code reading in the future.
+     * <p>
+     * @param x X position of the menu.
+     * @param y Y position of the menu.
+     */
     @Override
     public void drawMenu(float x, float y) {
 
@@ -183,6 +195,13 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         this.exitButton.drawElementHover(x, y, true);
     }
 
+    /**
+     * Draws the panorama for the 2017 menu.
+     * <p>
+     * @param mouseX X position.
+     * @param mouseY Y position.
+     * @param partialTicks - Not redundant in this case, as we need it for the old panorama method.
+     */
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 
@@ -193,6 +212,9 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
+    /**
+     * Updates the screen and values used for the logo rotation.
+     */
     @Override
     public void updateScreen() {
         super.updateScreen();
@@ -200,6 +222,13 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         this.lastMouseEvent = (float) ((Math.sin(this.eventButton) / 2.0 + 0.5) * 180.0);
     }
 
+    /**
+     * This handles main menu button and element clicks.
+     * <p>
+     * @param x Current mouse X position.
+     * @param y Current mouse Y position.
+     * @param button The mouse button that was clicked.
+     */
     @Override
     protected void mouseClicked(float x, float y, int button) {
 
@@ -243,10 +272,20 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
 
     }
 
+    /**
+     * Unused.
+     * <p>
+     * @param x Current mouse X position.
+     * @param y Current mouse Y position.
+     * @param button The mouse button that was released.
+     */
     @Override
     public void mouseReleased(float x, float y, int button) {
     }
 
+    /**
+     * Draws the center of the menu, where the singleplayer and multiplayer buttons are.
+     */
     private void drawCenter() {
 
         GL11.glPushMatrix();
@@ -293,8 +332,6 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 0.9f);
 
         GlStateManager.pushMatrix();
-//        Tessellator tessellator = Tessellator.getInstance();
-
         GlStateManager.pushMatrix();
         float scale = 0.65f;
         GL11.glScalef(scale, scale, scale);
@@ -313,12 +350,15 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
                 this.logoInner,
                 40.0F,
                 ((this.getScaledWidth() / 2) - 40.0F * scale) / scale,
-                ((this.getScaledHeight() / 4) - 39.0F * scale) / scale);
+                ((this.getScaledHeight() / 4) - 39.0F * scale) / scale
+        );
         GlStateManager.popMatrix();
         GlStateManager.popMatrix();
-//        tessellator.setColorOpaque_I(-1);
     }
 
+    /**
+     * Draws the top left CB logo.
+     */
     private void drawTopLeftWaterMark() {
         GL11.glPushMatrix();
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);

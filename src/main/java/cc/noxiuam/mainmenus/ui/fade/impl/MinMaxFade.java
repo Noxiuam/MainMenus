@@ -1,5 +1,8 @@
 package cc.noxiuam.mainmenus.ui.fade.impl;
 
+/**
+ * Reconstructed from CheatBreaker, documentation will come later.
+ */
 public class MinMaxFade extends FloatFade {
 
     public MinMaxFade(long l) {

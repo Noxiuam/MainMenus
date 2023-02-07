@@ -11,6 +11,9 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 
+/**
+ * CheatBreaker's font object.
+ */
 public class CBFont {
     private final float imgSize = 1048;
     protected CharData[] charData = new CharData[256];

@@ -16,7 +16,6 @@ import com.google.common.collect.ImmutableList;
 import com.replaymod.core.ReplayMod;
 import com.replaymod.replay.ReplayModReplay;
 import com.replaymod.replay.gui.screen.GuiReplayViewer;
-import lombok.SneakyThrows;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiMultiplayer;
@@ -28,6 +27,11 @@ import net.minecraftforge.fml.client.GuiModList;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Since Lunar Client's original main menu is vastly similar to CheatBreaker's main menu,
+ * I created a common base that the two could be based off of,
+ * mainly to prevent the same code from being repeated.
+ */
 public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
 
     protected final TextButton optionsButton = new TextButton("OPTIONS");
@@ -51,6 +55,9 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
 
     public AccountButton accountButton;
 
+    /**
+     * Set the bottom buttons, the panorama, account switcher, and other button sizes.
+     */
     @Override
     public void initGui() {
         super.initGui();
@@ -87,6 +94,12 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
         this.updateSizes();
     }
 
+    /**
+     * Draws the main menu as it comes.
+     * <p>
+     * @param x X position of the menu.
+     * @param y Y position of the menu.
+     */
     @Override
     public void drawMenu(float x, float y) {
 
@@ -117,6 +130,13 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
         }
     }
 
+    /**
+     * This handles main menu button and element clicks.
+     * <p>
+     * @param x Current mouse X position.
+     * @param y Current mouse Y position.
+     * @param button The mouse button that was clicked.
+     */
     @Override
     protected void mouseClicked(float x, float y, int button) {
 
@@ -153,14 +173,32 @@ public abstract class CommonCheatBreakerBase extends AbstractMainMenuBase {
         }
     }
 
+    /**
+     * Unused here.
+     * <p>
+     * @param x Current mouse X position.
+     * @param y Current mouse Y position.
+     * @param button The mouse button that was released.
+     */
     @Override
-    public void mouseReleased(float x, float y, int button) {}
+    public void mouseReleased(float x, float y, int button) { }
 
+    /**
+     * Meant to draw a watermark, typically for CheatBreaker this is the top left.
+     * <p>
+     * @param x X position for the watermark.
+     * @param y Y position for the watermark.
+     */
     public void drawWaterMarks(float x, float y) {}
 
+    /**
+     * Draws the center of the menu.
+     */
     public void drawCenter() {}
 
-    @SneakyThrows
+    /**
+     * Updates the button sizes so that it is not called every single tick.
+     */
     protected void updateSizes() {
 
         if (!this.isReplayModPresent) {

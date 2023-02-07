@@ -180,9 +180,9 @@ public class AccountButton extends AbstractElement {
     }
 
     @Override
-    public boolean handleElementMouseClicked(float mouseX, float mouseY, int button, boolean hovering) {
+    public void handleElementMouseClicked(float mouseX, float mouseY, int button, boolean hovering) {
         if (!hovering) {
-            return false;
+            return;
         }
 
         if (this.dropFade.isHovered()) {
@@ -222,7 +222,6 @@ public class AccountButton extends AbstractElement {
                 ++index;
             }
         }
-        return false;
     }
 
     @Override

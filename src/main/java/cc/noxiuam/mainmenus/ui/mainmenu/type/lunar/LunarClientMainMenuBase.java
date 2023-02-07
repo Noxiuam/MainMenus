@@ -10,12 +10,18 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
+/**
+ * A recreation of the original 2019 main menu, should be very close to a 1:1 replica.
+ */
 public class LunarClientMainMenuBase extends CommonCheatBreakerBase {
 
     private AnimatedLogoElement lunarLogo;
 
     private ColorFade titleColorFade;
 
+    /**
+     * Initialize the animated logo, color fades, panorama, and buttons.
+     */
     @Override
     public void initGui() {
         super.initGui();
@@ -41,19 +47,32 @@ public class LunarClientMainMenuBase extends CommonCheatBreakerBase {
         this.updateSizes();
     }
 
+    /**
+     * Draws the panorama.
+     * <p>
+     * @param x X position of the menu.
+     * @param y Y position of the menu.
+     */
     @Override
     public void drawMenu(float x, float y) {
-
         super.drawMenu(x, y);
-
     }
 
+    /**
+     * Draws the animated logo.
+     */
     @Override
     public void drawCenter() {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         this.drawLogo(this.getScaledWidth(), this.getScaledHeight());
     }
 
+    /**
+     * Draws the top left watermark with the fade intact.
+     * <p>
+     * @param x X position for the watermark.
+     * @param y Y position for the watermark.
+     */
     @Override
     public void drawWaterMarks(float x, float y) {
 
@@ -82,6 +101,13 @@ public class LunarClientMainMenuBase extends CommonCheatBreakerBase {
 
     }
 
+    /**
+     * Handles the top left watermark behavior.
+     * <p>
+     * @param x Current mouse X position.
+     * @param y Current mouse Y position.
+     * @param button The mouse button that was clicked.
+     */
     @Override
     protected void mouseClicked(float x, float y, int button) {
         super.mouseClicked(x, y, button);
@@ -95,10 +121,23 @@ public class LunarClientMainMenuBase extends CommonCheatBreakerBase {
 
     }
 
+    /**
+     * Unused.
+     * <p>
+     * @param x Current mouse X position.
+     * @param y Current mouse Y position.
+     * @param button The mouse button that was released.
+     */
     @Override
     public void mouseReleased(float x, float y, int button) {
     }
 
+    /**
+     * Draws the twinkling Lunar Client logo.
+     * <p>
+     * @param width The menu's scaled width.
+     * @param height The menu's scaled height.
+     */
     private void drawLogo(double width, double height) {
         float size = 64.0f;
         float x = (float) (width / 2.0 - (double) (size / 2.0f));

@@ -1,5 +1,8 @@
 package cc.noxiuam.mainmenus.ui.fade.impl;
 
+/**
+ * Reconstructed from CheatBreaker, documentation will come later.
+ */
 public class ExponentialFade extends FloatFade {
 
     public ExponentialFade(long duration) {

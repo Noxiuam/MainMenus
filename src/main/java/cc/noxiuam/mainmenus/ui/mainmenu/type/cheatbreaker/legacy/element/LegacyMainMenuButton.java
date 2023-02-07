@@ -2,19 +2,19 @@ package cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.legacy.element;
 
 import cc.noxiuam.mainmenus.ui.AbstractElement;
 import cc.noxiuam.mainmenus.ui.data.FontRegistry;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 
+/**
+ * This is the main center buttons in the legacy 2017 menu.
+ */
+@AllArgsConstructor
 public class LegacyMainMenuButton extends AbstractElement {
 
-    @Getter private final String text;
-    private final boolean showBackground;
-
-    public LegacyMainMenuButton(String text, boolean showBackground) {
-        this.text = text;
-        this.showBackground = showBackground;
-    }
+    @Getter private String text;
+    private boolean showBackground;
 
     @Override
     protected void handleElementDraw(float mouseX, float mouseY, boolean hovering) {

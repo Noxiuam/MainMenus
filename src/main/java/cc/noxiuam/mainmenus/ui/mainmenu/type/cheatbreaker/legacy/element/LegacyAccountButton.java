@@ -10,6 +10,9 @@ import lombok.Setter;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Used for the weird account switcher in the 2017 menu.
+ */
 @Getter @Setter
 public class LegacyAccountButton extends AbstractElement {
 

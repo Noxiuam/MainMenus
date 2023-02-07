@@ -2,6 +2,9 @@ package cc.noxiuam.mainmenus.ui.fade.impl;
 
 import cc.noxiuam.mainmenus.ui.fade.AbstractFade;
 
+/**
+ * Reconstructed from CheatBreaker, documentation will come later.
+ */
 public class FloatFade extends AbstractFade {
 
     public FloatFade(long duration) {

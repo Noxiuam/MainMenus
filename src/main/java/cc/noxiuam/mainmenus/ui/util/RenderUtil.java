@@ -9,6 +9,9 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * RenderUtil from CheatBreaker.
+ */
 @UtilityClass
 public class RenderUtil {
 
@@ -33,22 +36,21 @@ public class RenderUtil {
         GlStateManager.disableBlend();
     }
 
-    public void renderIcon(
-            ResourceLocation resourceLocation, float f, float f2, float f3, float f4) {
-        float f5 = f3 / 2.0f;
+    public void renderIcon(ResourceLocation resourceLocation, float x, float y, float width, float height) {
+        float f5 = width / 2.0f;
         float f6 = 0.0f;
         float f7 = 0.0f;
         GlStateManager.enableBlend();
         Minecraft.getMinecraft().renderEngine.bindTexture(resourceLocation);
         GL11.glBegin(7);
         GL11.glTexCoord2d(f6 / f5, f7 / f5);
-        GL11.glVertex2d(f, f2);
+        GL11.glVertex2d(x, y);
         GL11.glTexCoord2d(f6 / f5, (f7 + f5) / f5);
-        GL11.glVertex2d(f, f2 + f4);
+        GL11.glVertex2d(x, y + height);
         GL11.glTexCoord2d((f6 + f5) / f5, (f7 + f5) / f5);
-        GL11.glVertex2d(f + f3, f2 + f4);
+        GL11.glVertex2d(x + width, y + height);
         GL11.glTexCoord2d((f6 + f5) / f5, f7 / f5);
-        GL11.glVertex2d(f + f3, f2);
+        GL11.glVertex2d(x + width, y);
         GL11.glEnd();
         GlStateManager.disableBlend();
     }
@@ -92,24 +94,24 @@ public class RenderUtil {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
-    public void drawHorizontalLine(float f, float f2, float f3, int color) {
-        if (f2 < f) {
-            float f4 = f;
-            f = f2;
-            f2 = f4;
+    private void drawHorizontalLine(float left, float right, float thickness, int color) {
+        if (right < left) {
+            float f4 = left;
+            left = right;
+            right = f4;
         }
 
-        RenderUtil.drawRect(f, f3, f2 + 1.0f, f3 + 1.0f, color);
+        RenderUtil.drawRect(left, thickness, right + 1.0f, thickness + 1.0f, color);
     }
 
-    public void drawVerticalLine(float f, float f2, float f3, int color) {
-        if (f3 < f2) {
-            float f4 = f2;
-            f2 = f3;
-            f3 = f4;
+    public void drawVerticalLine(float left, float right, float thickness, int color) {
+        if (thickness < right) {
+            float tempThickness = right;
+            right = thickness;
+            thickness = tempThickness;
         }
 
-        RenderUtil.drawRect(f, f2 + 1.0f, f + 1.0f, f3, color);
+        RenderUtil.drawRect(left, right + 1.0f, left + 1.0f, thickness, color);
     }
 
     public void drawGradientRect(float left, float top, float right, float bottom, int startColor, int endColor) {
@@ -161,23 +163,23 @@ public class RenderUtil {
         GL11.glScalef(2.0f, 2.0f, 2.0f);
     }
 
-    public void drawBoxWithOutLine(float f, float f2, float f3, float f4, float f5, int n, int n2) {
-        RenderUtil.drawRect(f, f2, f3, f4, n2);
-        RenderUtil.drawRect(f - f5, f2 - f5, f, f4 + f5, n);
-        RenderUtil.drawRect(f3, f2 - f5, f3 + f5, f4 + f5, n);
-        RenderUtil.drawRect(f, f2 - f5, f3, f2, n);
-        RenderUtil.drawRect(f, f4, f3, f4 + f5, n);
+    public void drawBoxWithOutLine(float left, float top, float right, float bottom, float padding, int outlineColor, int innerColor) {
+        RenderUtil.drawRect(left, top, right, bottom, innerColor);
+        RenderUtil.drawRect(left - padding, top - padding, left, bottom + padding, outlineColor);
+        RenderUtil.drawRect(right, top - padding, right + padding, bottom + padding, outlineColor);
+        RenderUtil.drawRect(left, top - padding, right, top, outlineColor);
+        RenderUtil.drawRect(left, bottom, right, bottom + padding, outlineColor);
     }
 
-    public static void startScissorBox(int n, int n2, int n3, int n4, float f, int n5) {
-        int n6 = n4 - n2;
-        int n7 = n3 - n;
-        int n8 = n5 - n4;
+    public static void startScissorBox(int x, int y, int width, int height, float scaledWidth, int scaledHeight) {
+        int finalHeight1 = height - y;
+        int finalWidth = width - x;
+        int finalHeight2 = scaledHeight - height;
+
         GL11.glScissor(
-                (int) ((float) n * f),
-                (int) ((float) n8 * f),
-                (int) ((float) n7 * f),
-                (int) ((float) n6 * f));
+                (int) ((float) x * scaledWidth), (int) ((float) finalHeight2 * scaledWidth),
+                (int) ((float) finalWidth * scaledWidth), (int) ((float) finalHeight1 * scaledWidth)
+        );
     }
 
 }

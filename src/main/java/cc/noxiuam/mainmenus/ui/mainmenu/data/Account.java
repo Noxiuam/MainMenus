@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * An object that is used for switching ingame and keeping track of general account data.
+ */
 @Getter
 @AllArgsConstructor
 public class Account {

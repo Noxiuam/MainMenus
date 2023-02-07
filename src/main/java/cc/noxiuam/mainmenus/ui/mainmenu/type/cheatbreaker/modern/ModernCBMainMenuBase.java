@@ -13,6 +13,9 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
+/**
+ * The 2018 main menu from CheatBreaker, this menu was given to users on release.
+ */
 public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
 
     private final ResourceLocation outerLogo = new ResourceLocation("client/logo_255_outer.png");
@@ -23,6 +26,9 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
 
     private final CosineFade outerLogoRotationTime = new CosineFade(4000L);
 
+    /**
+     * Change buttons in ways that make it accurate to the CB menu from 2018.
+     */
     @Override
     public void initGui() {
         super.initGui();
@@ -46,32 +52,41 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
                 this.getScaledWidth() / 2.0f - (float) 50,
                 this.getScaledHeight() / 2.0f + 5.0F,
                 100.0F,
-                12);
+                12
+        );
 
         this.multiplayerButton.setElementSize(
                 this.getScaledWidth() / 2.0f - 50.0F,
                 this.getScaledHeight() / 2.0f + 24.0F,
                 100.0F,
-                12);
+                12
+        );
 
         this.optionsButton.setElementSize(124.0f, 6.0f, 42.0f, 20.0f);
         this.cosmeticsButton.setElementSize(167.0f, 6.0f, 48.0f, 20.0f);
 
         this.accountButton.setElementSize(
-                this.getScaledWidth()
-                        - 35.0f
-                        - this.accountButton.getNewAccountButtonWidth(this.accountButtonWidth),
+                this.getScaledWidth() - 35.0f - this.accountButton.getNewAccountButtonWidth(this.accountButtonWidth),
                 7.0f,
                 this.accountButton.getNewAccountButtonWidth(this.accountButtonWidth),
-                17.0f);
+                17.0f
+        );
     }
 
+    /**
+     * Draw the gradient overlay, the commit info and everything else in the base.
+     * <p>
+     * @param x X position of the menu.
+     * @param y Y position of the menu.
+     */
     @Override
     public void drawMenu(float x, float y) {
 
-        RenderUtil.drawGradientRect(
-                0.0f, 0.0f, this.getScaledWidth(), this.getScaledHeight(), 0x5FFFFFFF, 0x2FFFFFFF);
-        RenderUtil.drawGradientRect(0.0f, 0.0f, this.getScaledWidth(), 160.0f, -553648128, 0);
+        // Gray overlay over the entire screen.
+        RenderUtil.drawGradientRect(0.0f, 0.0f, this.getScaledWidth(), this.getScaledHeight(), 0x5FFFFFFF, 0x2FFFFFFF);
+
+        // A darker gradient at the top, stops at Y position 160.
+        RenderUtil.drawGradientRect(0.0f, 0.0f, this.getScaledWidth(), 160.0f, 0xDF000000, 0);
 
         super.drawMenu(x, y);
 
@@ -92,6 +107,13 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
         );
     }
 
+    /**
+     * Handles the mouse click behavior of the top left watermark.
+     * <p>
+     * @param x Current mouse X position.
+     * @param y Current mouse Y position.
+     * @param button The mouse button that was clicked.
+     */
     @Override
     protected void mouseClicked(float x, float y, int button) {
         super.mouseClicked(x, y, button);
@@ -104,6 +126,9 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
         }
     }
 
+    /**
+     * Draws a black box and the logo.
+     */
     @Override
     public void drawCenter() {
         RenderUtil.drawRect(
@@ -116,6 +141,12 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
         this.drawLogo(this.getScaledWidth(), this.getScaledHeight());
     }
 
+    /**
+     * Draws the top left watermark, this was later changed in Lunar Client to use a different color fade.
+     * <p>
+     * @param x X position for the watermark.
+     * @param y Y position for the watermark.
+     */
     @Override
     public void drawWaterMarks(float x, float y) {
         boolean hoveringOverTitle = x < this.optionsButton.getXPosition() && y < 30.0f;
@@ -127,6 +158,9 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
         FontRegistry.robotoRegular24px.drawString("CheatBreaker", 36.0f, 8.0f, -1);
     }
 
+    /**
+     * Updates the smooth animation for the rotating logo.
+     */
     @Override
     public void updateScreen() {
         super.updateScreen();
@@ -137,6 +171,12 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
         }
     }
 
+    /**
+     * Draws the rotating logo.
+     * <p>
+     * @param x
+     * @param y
+     */
     private void drawLogo(float x, float y) {
         float size = 27;
         double x2 = x / 2.0 - (double) size;

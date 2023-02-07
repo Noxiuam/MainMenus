@@ -38,47 +38,17 @@ public abstract class AbstractElement {
         this.height = height;
     }
 
-    /** Handles any updating for the element. */
-    public void handleElementUpdate() {}
-
-    /**
-     * Handles closing of the element. (for example, I may need to close an audio stream on element
-     * close.)
-     */
-    public void handleElementClose() {}
-
-    /**
-     * Handles key presses from a user.
-     *
-     * <p>
-     *
-     * @param c - The character a user typed.
-     * @param n - The numerical value of c.
-     */
-    public void keyTyped(char c, int n) {}
-
-    /** Handles mouse related things. (i.e. cursor movement, wheel movement, etc.) */
-    public void handleElementMouse() {}
-
     /** Draws the element to the screen. */
     protected abstract void handleElementDraw(float mouseX, float mouseY, boolean hovering);
 
-    /** Handles element mouse clicks. */
-    public boolean handleElementMouseClicked(float mouseX, float mouseY, int button, boolean hovering) {
-        return false;
+    /**
+     * Handles element mouse clicks.
+     */
+    public void handleElementMouseClicked(float mouseX, float mouseY, int button, boolean hovering) {
     }
 
-    /**
-     * Handles mouse movement.
-     */
-    public void onMouseMoved(float mouseX, float mouseY, int button, boolean hovering) {}
-
-    /**
-     * Handles mouse clicking, it seems it is false by default, possibly for being an old method.
-     */
-    public boolean onMouseClick(float mouseX, float mouseY, int button) {
-        return false;
-    }
+    /** Handles mouse related things. (i.e. cursor movement, wheel movement, etc.) */
+    public void handleElementMouse() {}
 
 }
 

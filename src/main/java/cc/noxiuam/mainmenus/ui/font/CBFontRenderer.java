@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * CheatBreaker's font renderer.
+ */
 public class CBFontRenderer extends CBFont {
     private final char COLOR_CODE_START = (char) 167;
 

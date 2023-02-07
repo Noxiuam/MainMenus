@@ -3,7 +3,9 @@ package cc.noxiuam.mainmenus.ui.fade;
 import lombok.Getter;
 import lombok.Setter;
 
-/** ENTIRE CLASS MAPPINGS IS TEMPORARILY LIKE THIS - HAVEN'T FIGURED OUT EVERYTHING */
+/**
+ * Reconstructed from CheatBreaker, documentation will come later.
+ */
 @Getter
 @Setter
 public abstract class AbstractFade {

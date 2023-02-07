@@ -31,6 +31,9 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.*;
 
+/**
+ * Used for all main menus in the mod.
+ */
 public abstract class AbstractMainMenuBase extends AbstractGui {
 
     private DynamicTexture viewportTexture;
@@ -50,6 +53,9 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
 
     public boolean isReplayModPresent = false;
 
+    /**
+     * Initialize the buttons, accounts file, ReplayMod boolean, and viewport/background textures.
+     */
     @Override
     public void initGui() {
         super.initGui();
@@ -66,18 +72,21 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
         }
 
         this.viewportTexture = new DynamicTexture(256, 256);
-        this.backgroundTexture =
-                this.mc
-                        .getTextureManager()
-                        .getDynamicTextureLocation("background", viewportTexture);
+        this.backgroundTexture = this.mc.getTextureManager().getDynamicTextureLocation("background", viewportTexture);
     }
 
+    /**
+     * Updates the rotation angle of the panorama.
+     */
     @Override
     public void updateScreen() {
         super.updateScreen();
         ++rotationAngle;
     }
 
+    /**
+     * Prevents the menu from resetting when you press escape.
+     */
     @Override
     protected void keyTyped(char c, int n) throws IOException {
         if (n == Keyboard.KEY_ESCAPE) {
@@ -87,14 +96,19 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
         super.keyTyped(c, n);
     }
 
+    /**
+     * Plays the Minecraft gui button click sound.
+     */
     public void playClick() {
-        this.mc
-                .getSoundHandler()
-                .playSound(
-                        PositionedSoundRecord.create(
-                                new ResourceLocation("gui.button.press"), 1.0f));
+        this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0f));
     }
 
+    /**
+     * Attempts to log you into an account.
+     * <p>
+     * @param username The username of the account you want to log into.
+     * @return If it actually logged in or not.
+     */
     public boolean login(String username) {
         try {
             Account potentialAccount = null;
@@ -177,7 +191,6 @@ public abstract class AbstractMainMenuBase extends AbstractGui {
             for (Field f : mc.getDeclaredFields()) {
                 if (f.getType().isInstance(sessionIn)) {
                     session = f;
-                    System.out.println("Found field " + f + ", injecting...");
                 }
             }
 

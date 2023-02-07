@@ -7,6 +7,9 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Used for the EXIT button in the 2017 menu.
+ */
 public class ImageButtonElement extends AbstractElement {
 
     private final String text;

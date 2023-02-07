@@ -6,6 +6,9 @@ import cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.modern.ModernCBMainMen
 import cc.noxiuam.mainmenus.ui.util.RenderUtil;
 import org.lwjgl.input.Keyboard;
 
+/**
+ * Recreation of the cosmetics menu, when you do not have cosmetics.
+ */
 public class CBCosmeticsMenu extends ModernCBMainMenuBase {
 
     private final GradientTextButton backButton = new GradientTextButton("BACK", FontRegistry.robotoMedium13px);

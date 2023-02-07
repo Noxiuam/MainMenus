@@ -14,7 +14,7 @@ import org.lwjgl.opengl.GL11;
 /**
  * Text button used by CheatBreaker & Lunar Client 2019
  * <p>
- * Credits: Moonsworth, LLC for combining two elements into one.
+ * Credits: Moonsworth, LLC for combining two elements into one, was very smart.
  */
 public class GradientTextButton extends AbstractElement {
 
@@ -28,8 +28,6 @@ public class GradientTextButton extends AbstractElement {
 
     private String text;
 
-    private int[] cbColors;
-
     @Setter private float iconScale;
 
     @Setter private float textYOffset = 3.0F;
@@ -37,24 +35,8 @@ public class GradientTextButton extends AbstractElement {
     private boolean showText;
     @Setter private boolean showBackground = true;
 
-    // used to save performance
+    // used to save on some performance
     private boolean hasSet = false;
-
-    public GradientTextButton(ResourceLocation resourceLocation) {
-        this.fontRenderer = FontRegistry.robotoMedium13px;
-        this.icon = resourceLocation;
-        this.iconScale = 4.0F;
-
-        if (MainMenus.config.mainMenu == 1) {
-            this.outlineColor = new ColorFade(0x4FFFFFFF, -1);
-            this.topGradientColor = new ColorFade(0x40000000, 0x1A858585);
-            this.bottomGradientColor = new ColorFade(0x40000000, 0x1A858585);
-        } else {
-            this.outlineColor = new ColorFade(0xFF262626, -11493284);
-            this.topGradientColor = new ColorFade(0xFF323232, -10176146);
-            this.bottomGradientColor = new ColorFade(0xFF2A2A2A, -11164318);
-        }
-    }
 
     public GradientTextButton(float iconScale, ResourceLocation resourceLocation) {
         this.fontRenderer = FontRegistry.robotoMedium13px;

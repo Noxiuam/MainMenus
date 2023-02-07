@@ -7,6 +7,10 @@ import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * CheatBreaker's scrollable element.
+ * Untested if this actually works.
+ */
 public class ScrollableElement extends AbstractElement {
 
     @Getter
@@ -123,12 +127,11 @@ public class ScrollableElement extends AbstractElement {
         return this.scrollAmount > this.height;
     }
 
-    public boolean handleElementMouseClicked(float mouseX, float mouseY, int button, boolean hovering) {
+    public void handleElementMouseClicked(float mouseX, float mouseY, int button, boolean hovering) {
         if (this.isMouseInside(mouseX, mouseY) && hovering) {
             this.someFloaty = mouseY - this.yPosition;
             this.buttonHeld = true;
         }
-        return false;
     }
 
     public void handleElementMouse() {

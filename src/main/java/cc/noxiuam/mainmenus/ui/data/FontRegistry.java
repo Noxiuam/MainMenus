@@ -4,6 +4,9 @@ import cc.noxiuam.mainmenus.ui.font.CBFontRenderer;
 import lombok.experimental.UtilityClass;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Stores all the font's used in the custom main menus.
+ */
 @UtilityClass
 public class FontRegistry {
 
