@@ -4,6 +4,7 @@ import cc.noxiuam.mainmenus.MainMenus;
 import cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.legacy.LegacyCBMainMenuBase;
 import cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.modern.ModernCBMainMenuBase;
 import cc.noxiuam.mainmenus.ui.mainmenu.type.lunar.LunarClientMainMenuBase;
+import cc.noxiuam.mainmenus.ui.mainmenu.type.playstation3.PS3MainMenuBase;
 import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,6 +33,10 @@ public class GuiMultiplayerMixin {
 
                 case 3:
                     this.parentScreen = new LegacyCBMainMenuBase();
+                    break;
+
+                case 4:
+                    this.parentScreen = new PS3MainMenuBase();
                     break;
             }
         }

@@ -9,8 +9,8 @@ import lombok.Getter;
 @Getter
 public abstract class AbstractElement {
 
-    protected float xPosition;
-    protected float yPosition;
+    protected float x;
+    protected float y;
     protected float width;
     protected float height;
 
@@ -18,10 +18,10 @@ public abstract class AbstractElement {
 
     /** Checks if the mouse is inside the element. */
     public boolean isMouseInside(float x, float y) {
-        return x > this.xPosition
-                && x < this.xPosition + this.width
-                && y > this.yPosition
-                && y < this.yPosition + this.height;
+        return x > this.x
+                && x < this.x + this.width
+                && y > this.y
+                && y < this.y + this.height;
     }
 
     /** Draws the element based on if the user is hovering on it or not. */
@@ -32,8 +32,8 @@ public abstract class AbstractElement {
 
     /** Sets the size of the element. */
     public void setElementSize(float x, float y, float width, float height) {
-        this.xPosition = x;
-        this.yPosition = y;
+        this.x = x;
+        this.y = y;
         this.width = width;
         this.height = height;
     }

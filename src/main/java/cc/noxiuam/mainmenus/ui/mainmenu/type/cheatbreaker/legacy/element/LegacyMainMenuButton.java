@@ -24,10 +24,10 @@ public class LegacyMainMenuButton extends AbstractElement {
 
         if (this.showBackground) {
             Gui.drawRect(
-                    (int) this.xPosition,
-                    (int) this.yPosition,
-                    (int) (this.xPosition + this.width),
-                    (int) (this.yPosition + this.height),
+                    (int) this.x,
+                    (int) this.y,
+                    (int) (this.x + this.width),
+                    (int) (this.y + this.height),
                     mouseOver ? -15395563 : -14540254);
         }
 
@@ -38,8 +38,8 @@ public class LegacyMainMenuButton extends AbstractElement {
 
         FontRegistry.playRegular16px.drawCenteredString(
                         this.text,
-                        this.xPosition + this.width / 2,
-                        this.yPosition + this.height / 2 - 5,
+                        this.x + this.width / 2,
+                        this.y + this.height / 2 - 5,
                         textColor
                 );
     }

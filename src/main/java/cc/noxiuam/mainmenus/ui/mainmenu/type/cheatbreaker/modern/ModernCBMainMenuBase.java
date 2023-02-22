@@ -118,7 +118,7 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
     protected void mouseClicked(float x, float y, int button) {
         super.mouseClicked(x, y, button);
 
-        boolean hoveringOnTitle = x < this.optionsButton.getXPosition() && y < 30.0f;
+        boolean hoveringOnTitle = x < this.optionsButton.getX() && y < 30.0f;
 
         if (hoveringOnTitle) {
             this.playClick();
@@ -132,9 +132,9 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
     @Override
     public void drawCenter() {
         RenderUtil.drawRect(
-                this.singleplayerButton.getXPosition() - (float) 20, this.getScaledHeight() / 2.0f - (float) 80,
-                this.singleplayerButton.getXPosition() + this.singleplayerButton.getWidth() + (float) 20,
-                this.multiplayerButton.getYPosition() + this.multiplayerButton.getHeight() + (float) 14,
+                this.singleplayerButton.getX() - (float) 20, this.getScaledHeight() / 2.0f - (float) 80,
+                this.singleplayerButton.getX() + this.singleplayerButton.getWidth() + (float) 20,
+                this.multiplayerButton.getY() + this.multiplayerButton.getHeight() + (float) 14,
                 0x2F000000
         );
 
@@ -149,7 +149,7 @@ public class ModernCBMainMenuBase extends CommonCheatBreakerBase {
      */
     @Override
     public void drawWaterMarks(float x, float y) {
-        boolean hoveringOverTitle = x < this.optionsButton.getXPosition() && y < 30.0f;
+        boolean hoveringOverTitle = x < this.optionsButton.getX() && y < 30.0f;
         Color titleTextColor = this.overlayGradient.getColor(hoveringOverTitle);
 
         FontRegistry.robotoRegular24px.drawString("CheatBreaker", 37.0f, 9.0f, titleTextColor.getRGB());

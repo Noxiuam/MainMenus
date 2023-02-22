@@ -83,9 +83,9 @@ public class GradientTextButton extends AbstractElement {
         }
 
         RenderUtil.drawGradientRectWithOutline(
-                this.xPosition, this.yPosition,
-                this.xPosition + this.width,
-                this.yPosition + this.height,
+                this.x, this.y,
+                this.x + this.width,
+                this.y + this.height,
                 this.outlineColor.getColor(mouseOver).getRGB(),
                 this.topGradientColor.getColor(mouseOver).getRGB(),
                 this.bottomGradientColor.getColor(mouseOver).getRGB()
@@ -94,14 +94,14 @@ public class GradientTextButton extends AbstractElement {
         if (this.showText) {
 
             this.fontRenderer.drawCenteredString(
-                    this.text, this.xPosition + this.width / 2.0F,
-                    this.yPosition + this.textYOffset, -1
+                    this.text, this.x + this.width / 2.0F,
+                    this.y + this.textYOffset, -1
             );
         } else {
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.8F);
             RenderUtil.renderIcon(
                     this.icon, this.iconScale,
-                    this.xPosition + this.width / 2.0F - this.iconScale, this.yPosition + this.height / 2.0F - this.iconScale
+                    this.x + this.width / 2.0F - this.iconScale, this.y + this.height / 2.0F - this.iconScale
             );
         }
     }

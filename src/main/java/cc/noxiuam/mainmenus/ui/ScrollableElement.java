@@ -36,7 +36,7 @@ public class ScrollableElement extends AbstractElement {
     }
 
     public boolean isMouseInside(float x, float y) {
-        return x >= this.xPosition && x <= this.xPosition + this.width && y > this.yPosition && y < this.yPosition + this.height;
+        return x >= this.x && x <= this.x + this.width && y > this.y && y < this.y + this.height;
     }
 
     public void handleElementDraw(float mouseX, float mouseY, boolean hovering) {
@@ -60,25 +60,25 @@ public class ScrollableElement extends AbstractElement {
         float yPos;
 
         if (Mouse.isButtonDown(0) && this.buttonHeld) {
-            yPos = mouseY - this.yPosition;
+            yPos = mouseY - this.y;
             float yByHeight = yPos / this.height;
             this.position = -(this.scrollAmount * yByHeight) + calculatedHeight / 2.0F;
         }
 
         if (atBottom) {
             yPos = this.height;
-            boolean elementHovered = mouseX >= this.xPosition && mouseX <= this.xPosition + this.width && mouseY > this.yPosition - calculatedPosition && mouseY < this.yPosition + calculatedHeight - calculatedPosition;
+            boolean elementHovered = mouseX >= this.x && mouseX <= this.x + this.width && mouseY > this.y - calculatedPosition && mouseY < this.y + calculatedHeight - calculatedPosition;
 
             if (this.hovering) {
                 if (this.position != this.oldTranslateY && this.oldTranslateY != calculatedHeight / 2.0F && this.oldTranslateY != calculatedHeight / 2.0F + -this.scrollAmount + yPos) {
-                    if (mouseY > this.yPosition + calculatedHeight - calculatedHeight / (float) 4 - calculatedPosition) {
+                    if (mouseY > this.y + calculatedHeight - calculatedHeight / (float) 4 - calculatedPosition) {
                         this.position -= elementScrollAmount / (float) 7;
-                    } else if (mouseY < this.yPosition + calculatedHeight / (float) 4 - calculatedPosition) {
+                    } else if (mouseY < this.y + calculatedHeight / (float) 4 - calculatedPosition) {
                         this.position += elementScrollAmount / (float) 7;
                     }
 
                     this.oldTranslateY = this.position;
-                } else if (mouseY > this.yPosition + calculatedHeight - calculatedHeight / (float) 4 - calculatedPosition || mouseY < this.yPosition + calculatedHeight / (float) 4 - calculatedPosition) {
+                } else if (mouseY > this.y + calculatedHeight - calculatedHeight / (float) 4 - calculatedPosition || mouseY < this.y + calculatedHeight / (float) 4 - calculatedPosition) {
                     this.oldTranslateY = 1.0F;
                 }
             }
@@ -93,8 +93,8 @@ public class ScrollableElement extends AbstractElement {
                 this.internalScrollAmount = 0.0D;
             }
 
-            RenderUtil.drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, -13158601);
-            RenderUtil.drawRect(this.xPosition, this.yPosition - calculatedPosition, this.xPosition + this.width, this.yPosition + calculatedHeight - calculatedPosition, !elementHovered && !this.hovering ? -4180940 : -52429);
+            RenderUtil.drawRect(this.x, this.y, this.x + this.width, this.y + this.height, -13158601);
+            RenderUtil.drawRect(this.x, this.y - calculatedPosition, this.x + this.width, this.y + calculatedHeight - calculatedPosition, !elementHovered && !this.hovering ? -4180940 : -52429);
         }
 
         if (!atBottom && this.position != 0.0F) {
@@ -129,7 +129,7 @@ public class ScrollableElement extends AbstractElement {
 
     public void handleElementMouseClicked(float mouseX, float mouseY, int button, boolean hovering) {
         if (this.isMouseInside(mouseX, mouseY) && hovering) {
-            this.someFloaty = mouseY - this.yPosition;
+            this.someFloaty = mouseY - this.y;
             this.buttonHeld = true;
         }
     }

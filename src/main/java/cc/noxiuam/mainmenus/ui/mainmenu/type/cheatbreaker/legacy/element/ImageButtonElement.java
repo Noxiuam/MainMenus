@@ -30,10 +30,10 @@ public class ImageButtonElement extends AbstractElement {
 
         if (this.showBackground) {
             Gui.drawRect(
-                    (int) this.xPosition,
-                    (int) this.yPosition,
-                    (int) (this.xPosition + this.getWidth()),
-                    (int) (this.yPosition + this.getHeight()),
+                    (int) this.x,
+                    (int) this.y,
+                    (int) (this.x + this.getWidth()),
+                    (int) (this.y + this.getHeight()),
                     mouseOver ? -15395563 : -14540254);
         }
 
@@ -44,8 +44,8 @@ public class ImageButtonElement extends AbstractElement {
 
         FontRegistry.playRegular16px.drawCenteredString(
                 this.text,
-                this.xPosition + this.getWidth() / 2,
-                this.yPosition + this.getHeight() / 2 - (this.showBackground ? 6 : 5),
+                this.x + this.getWidth() / 2,
+                this.y + this.getHeight() / 2 - (this.showBackground ? 6 : 5),
                 textColor
         );
 
@@ -53,8 +53,8 @@ public class ImageButtonElement extends AbstractElement {
         RenderUtil.renderIcon(
                 this.image,
                 7.0F,
-                this.xPosition + this.getWidth() - 20,
-                this.yPosition + 5);
+                this.x + this.getWidth() - 20,
+                this.y + 5);
     }
 
 }

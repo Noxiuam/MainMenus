@@ -25,8 +25,8 @@ public class TextButton extends AbstractElement {
     protected void handleElementDraw(float x, float y, boolean hovering) {
         FontRegistry.robotoBold14px.drawString(
                 this.text,
-                this.xPosition + 6.0f,
-                this.yPosition + 6.0f,
+                this.x + 6.0f,
+                this.y + 6.0f,
                 this.colorFade.getColor(this.isMouseInside(x, y) && hovering).getRGB()
         );
     }

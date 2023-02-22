@@ -4,6 +4,7 @@ import cc.noxiuam.mainmenus.MainMenus;
 import cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.legacy.LegacyCBMainMenuBase;
 import cc.noxiuam.mainmenus.ui.mainmenu.type.cheatbreaker.modern.ModernCBMainMenuBase;
 import cc.noxiuam.mainmenus.ui.mainmenu.type.lunar.LunarClientMainMenuBase;
+import cc.noxiuam.mainmenus.ui.mainmenu.type.playstation3.PS3MainMenuBase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
@@ -35,6 +36,12 @@ public abstract class MinecraftMixin {
                     case 3:
                         ci.cancel();
                         Minecraft.getMinecraft().displayGuiScreen(new LegacyCBMainMenuBase());
+                        break;
+
+                    case 4:
+                        ci.cancel();
+                        //Minecraft.getMinecraft().displayGuiScreen(new LegacyCBMainMenuBase());
+                        Minecraft.getMinecraft().displayGuiScreen(new PS3MainMenuBase());
                         break;
                 }
             }

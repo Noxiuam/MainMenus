@@ -64,9 +64,9 @@ public class AccountButton extends AbstractElement {
         boolean mouseInside = hovering && this.isMouseInside(x, y);
 
         RenderUtil.drawGradientRectWithOutline(
-                this.xPosition, this.yPosition,
-                this.xPosition + this.width,
-                this.yPosition + this.modifiedHeight,
+                this.x, this.y,
+                this.x + this.width,
+                this.y + this.modifiedHeight,
                 this.outline.getColor(mouseInside).getRGB(),
                 this.topGradient.getColor(mouseInside).getRGB(),
                 this.bottomGradient.getColor(mouseInside).getRGB()
@@ -82,12 +82,12 @@ public class AccountButton extends AbstractElement {
 
         float xOffset = 6.0f;
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        RenderUtil.renderIcon(this.avatarIcon, xOffset, this.xPosition + 4.0f, this.yPosition + this.modifiedHeight / 2.0f - xOffset);
-        fontRenderer.drawString(this.displayName, this.xPosition + 22.0f, this.yPosition + 4.5f, -1342177281);
+        RenderUtil.renderIcon(this.avatarIcon, xOffset, this.x + 4.0f, this.y + this.modifiedHeight / 2.0f - xOffset);
+        fontRenderer.drawString(this.displayName, this.x + 22.0f, this.y + 4.5f, -1342177281);
 
         float heightFadeAmount = this.dropFade.inOutFade(this.isMouseInside(x, y) && hovering);
         if (this.dropFade.isZeroOrLess()) {
-            this.setElementSize(this.xPosition, this.yPosition, this.width, this.modifiedHeight + this.accountSelectionBoxHeight * heightFadeAmount);
+            this.setElementSize(this.x, this.y, this.width, this.modifiedHeight + this.accountSelectionBoxHeight * heightFadeAmount);
             this.interacting = true;
         } else if (!this.dropFade.isZeroOrLess() && !this.isMouseInside(x, y)) {
             this.interacting = false;
@@ -97,14 +97,14 @@ public class AccountButton extends AbstractElement {
             boolean flag;
 
             float halfOfOne = 0.5f;
-            float initialHeight = this.yPosition + this.height + halfOfOne;
-            float currentHeight = this.yPosition + 5.0f + this.modifiedHeight;
+            float initialHeight = this.y + this.height + halfOfOne;
+            float currentHeight = this.y + 5.0f + this.modifiedHeight;
 
             // The outline of the whole account switcher
             if (initialHeight > currentHeight) {
                 RenderUtil.drawBoxWithOutLine(
-                        this.xPosition + 1.0f, currentHeight,
-                        this.xPosition + this.width - 1.0f,
+                        this.x + 1.0f, currentHeight,
+                        this.x + this.width - 1.0f,
                         initialHeight,
                         halfOfOne,
                         0x4FFFFFFF,
@@ -115,10 +115,10 @@ public class AccountButton extends AbstractElement {
             GL11.glPushMatrix();
             GL11.glEnable(3089);
             RenderUtil.startScissorBox(
-                    (int) this.xPosition,
-                    (int) (this.yPosition + this.modifiedHeight),
-                    (int) (this.xPosition + this.width),
-                    (int) (this.yPosition + this.modifiedHeight + 7.0f + (this.height - this.modifiedHeight - 6.0f) * heightFadeAmount),
+                    (int) this.x,
+                    (int) (this.y + this.modifiedHeight),
+                    (int) (this.x + this.width),
+                    (int) (this.y + this.modifiedHeight + 7.0f + (this.height - this.modifiedHeight - 6.0f) * heightFadeAmount),
                     this.mainMenuBase.getScaledResolution().getScaleFactor() * this.mainMenuBase.getScaleFactor(),
                     (int) this.mainMenuBase.getScaledHeight()
             );
@@ -131,9 +131,9 @@ public class AccountButton extends AbstractElement {
 
                 flag = account.getAccessToken() == null;
 
-                float initialAccountX = this.xPosition;
-                float accountWidth = this.xPosition + this.width;
-                float accountHeight = this.yPosition + this.modifiedHeight + (float)(index * 16) - 8.0f;
+                float initialAccountX = this.x;
+                float accountWidth = this.x + this.width;
+                float accountHeight = this.y + this.modifiedHeight + (float)(index * 16) - 8.0f;
                 float padding = accountHeight + 16.0f;
 
                 boolean hoveringOverAccount =
@@ -146,13 +146,13 @@ public class AccountButton extends AbstractElement {
 
                 // account avatar
                 GL11.glColor4f(flag ? 0.8f : 1.0f, flag ? 0.15f : 1.0f, flag ? 0.15f : 1.0f, hoveringOverAccount ? 0.5f : 0.3f);
-                RenderUtil.renderIcon(account.getHeadIcon(), xOffset, this.xPosition + 4.0f, accountHeight + 8.0f - xOffset);
+                RenderUtil.renderIcon(account.getHeadIcon(), xOffset, this.x + 4.0f, accountHeight + 8.0f - xOffset);
 
                 // account username
 
                 fontRenderer.drawString(
                         account.getDisplayName(),
-                        this.xPosition + 22.0f,
+                        this.x + 22.0f,
                         accountHeight + 4.0f,
                         hoveringOverAccount ? (flag ? -2130771968 : -1) : (flag ? 452919296 : -1342177281)
                 );
@@ -162,12 +162,12 @@ public class AccountButton extends AbstractElement {
 
             // add account button, should look at how this is done elsewhere.
             if (MainMenus.config.mainMenu == 1) {
-                float addAccountY = this.yPosition + this.modifiedHeight + (float)(index * 16) - 8.0f;
+                float addAccountY = this.y + this.modifiedHeight + (float)(index * 16) - 8.0f;
                 float addAccountPadding = addAccountY + 16.0f;
-                flag = x > this.xPosition + this.width / 2.0f - 3.0f && x < this.xPosition + this.width / 2.0f + 3.0f && y - this.scrollbar.getPosition() > addAccountY && y - this.scrollbar.getPosition() < addAccountPadding && hovering && !this.scrollbar.isMouseInside(x, y) && !this.scrollbar.isButtonHeld();
+                flag = x > this.x + this.width / 2.0f - 3.0f && x < this.x + this.width / 2.0f + 3.0f && y - this.scrollbar.getPosition() > addAccountY && y - this.scrollbar.getPosition() < addAccountPadding && hovering && !this.scrollbar.isMouseInside(x, y) && !this.scrollbar.isButtonHeld();
 
                 GL11.glColor4f(1.0f, 1.0f, 1.0f, flag ? 1.0f : 0.7f);
-                RenderUtil.renderIcon(new ResourceLocation("client/icons/plus-64.png"), 4.0f, this.xPosition + this.width / 2.0f - 3.0f, addAccountY + xOffset / 2.0f);
+                RenderUtil.renderIcon(new ResourceLocation("client/icons/plus-64.png"), 4.0f, this.x + this.width / 2.0f - 3.0f, addAccountY + xOffset / 2.0f);
             }
 
             this.scrollbar.handleElementDraw(x, y, hovering);
@@ -176,7 +176,7 @@ public class AccountButton extends AbstractElement {
             GL11.glPopMatrix();
         }
 
-        this.setElementSize(this.xPosition, this.yPosition, this.width, this.height);
+        this.setElementSize(this.x, this.y, this.width, this.height);
     }
 
     @Override
@@ -195,9 +195,9 @@ public class AccountButton extends AbstractElement {
                     continue;
                 }
 
-                float initialAccountX = this.xPosition;
-                float accountWidth = this.xPosition + this.width;
-                float accountHeight = this.yPosition + this.modifiedHeight + (float) (index * 16) - 8.0f;
+                float initialAccountX = this.x;
+                float accountWidth = this.x + this.width;
+                float accountHeight = this.y + this.modifiedHeight + (float) (index * 16) - 8.0f;
                 float padding = accountHeight + 16.0f;
 
                 boolean hoveringOverAccount = mouseX > initialAccountX && mouseX < accountWidth && mouseY - this.scrollbar.getPosition() > accountHeight && mouseY - this.scrollbar.getPosition() < padding && hovering && !this.scrollbar.isMouseInside(mouseX, mouseY) && !this.scrollbar.isButtonHeld();

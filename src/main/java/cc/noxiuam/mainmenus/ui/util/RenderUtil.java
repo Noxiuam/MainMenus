@@ -182,4 +182,13 @@ public class RenderUtil {
         );
     }
 
+    public static float[] getRGBFromInt(int color) {
+        float red = (float) (color >> 16 & 0xFF) / 255.0F;
+        float green = (float) (color >> 8 & 0xFF) / 255.0F;
+        float blue = (float) (color & 0xFF) / 255.0F;
+        int alpha = color >> 24 & 0xFF;
+
+        return new float[]{red, green, blue, alpha};
+    }
+
 }

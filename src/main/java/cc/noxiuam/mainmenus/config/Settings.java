@@ -14,7 +14,8 @@ public class Settings extends Config {
             "Vanilla", // 0
             "Lunar 2019", // 1
             "CheatBreaker 2018", // 2
-            "CheatBreaker 2017" // 3
+            "CheatBreaker 2017", // 3
+            "Playstation 3" // 4
     })
     public int mainMenu = 0;
 

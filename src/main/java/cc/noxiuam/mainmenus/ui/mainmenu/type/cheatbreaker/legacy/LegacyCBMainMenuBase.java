@@ -174,10 +174,10 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
                 this.hasHoveredOverAccountButton = true;
             }
 
-            this.showAccountList = this.hasHoveredOverAccountButton && x > this.accountButton.getXPosition()
-                    && x < this.accountButton.getXPosition() + this.accountButton.getWidth()
-                    && y > this.accountButton.getYPosition()
-                    && y < this.accountButton.getYPosition() + this.accountButton.getHeight() * this.accountButtons.size();
+            this.showAccountList = this.hasHoveredOverAccountButton && x > this.accountButton.getX()
+                    && x < this.accountButton.getX() + this.accountButton.getWidth()
+                    && y > this.accountButton.getY()
+                    && y < this.accountButton.getY() + this.accountButton.getHeight() * this.accountButtons.size();
 
             if (this.showAccountList) {
                 float accountButtonHeight = this.accountButton.getHeight();
@@ -258,9 +258,9 @@ public class LegacyCBMainMenuBase extends AbstractMainMenuBase {
         if (this.showAccountList) {
             for (LegacyAccountButton accountButton : this.accountButtons) {
                 if (accountButton != this.accountButton
-                        && x < accountButton.getXPosition() + accountButton.getWidth()
-                        && y > accountButton.getYPosition()
-                        && y < accountButton.getYPosition() + accountButton.getHeight()) {
+                        && x < accountButton.getX() + accountButton.getWidth()
+                        && y > accountButton.getY()
+                        && y < accountButton.getY() + accountButton.getHeight()) {
                     if (!this.login(accountButton.getDisplayName()) || accountButton == this.accountButton) break;
 
                     this.accountButton.setDisplayName(accountButton.getDisplayName());

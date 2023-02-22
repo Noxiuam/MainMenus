@@ -76,7 +76,7 @@ public class LunarClientMainMenuBase extends CommonCheatBreakerBase {
     @Override
     public void drawWaterMarks(float x, float y) {
 
-        boolean hoveringOnTitle = x < this.optionsButton.getXPosition() && y < 30.0f;
+        boolean hoveringOnTitle = x < this.optionsButton.getX() && y < 30.0f;
         Color color = this.titleColorFade.getColor(hoveringOnTitle);
 
         FontRegistry.robotoRegular24px.drawString("Lunar Client", 27.0f, 13.0f, color.getRGB());
@@ -112,7 +112,7 @@ public class LunarClientMainMenuBase extends CommonCheatBreakerBase {
     protected void mouseClicked(float x, float y, int button) {
         super.mouseClicked(x, y, button);
 
-        boolean hoveringOnTitle = x < this.optionsButton.getXPosition() && y < 30.0f;
+        boolean hoveringOnTitle = x < this.optionsButton.getX() && y < 30.0f;
 
         if (hoveringOnTitle) {
             this.playClick();

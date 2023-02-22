@@ -29,10 +29,10 @@ public class LegacyAccountButton extends AbstractElement {
     protected void handleElementDraw(float mouseX, float mouseY, boolean hovering) {
 
         RenderUtil.drawRect(
-                this.xPosition,
-                this.yPosition,
-                this.xPosition + this.width,
-                this.yPosition + this.height,
+                this.x,
+                this.y,
+                this.x + this.width,
+                this.y + this.height,
                 this.isMouseInside(mouseX, mouseY) ? -15395563 : -14540254);
 
         int textColor = -1;
@@ -41,17 +41,17 @@ public class LegacyAccountButton extends AbstractElement {
         }
 
         if (this.displayName.length() > 9) {
-            float x = this.getXPosition() + this.width / 2 + 12;
-            float y = this.yPosition + this.height / 2 - 4;
+            float x = this.getX() + this.width / 2 + 12;
+            float y = this.y + this.height / 2 - 4;
             FontRegistry.playRegular14px.drawCenteredString(this.displayName, x, y, textColor);
         } else {
-            float x = this.xPosition + this.width / 2 + 12;
-            float y = this.yPosition + this.height / 2 - 5;
+            float x = this.x + this.width / 2 + 12;
+            float y = this.y + this.height / 2 - 5;
             FontRegistry.playRegular16px.drawCenteredString(this.displayName, x, y, textColor);
         }
 
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-        RenderUtil.renderIcon(this.headIcon, 7.0f, this.xPosition + 10, this.yPosition + 5);
+        RenderUtil.renderIcon(this.headIcon, 7.0f, this.x + 10, this.y + 5);
     }
 
 }

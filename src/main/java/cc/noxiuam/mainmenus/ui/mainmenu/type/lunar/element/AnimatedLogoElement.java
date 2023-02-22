@@ -63,11 +63,11 @@ public class AnimatedLogoElement extends AbstractElement {
 
         if (this.shadow) {
             GlStateManager.color(0.0F, 0.0F, 0.0F, 0.2f);
-            RenderUtil.renderIcon(this.origLunarLogo, this.xPosition + 1.0F, this.yPosition + 1.0F, this.width, this.height);
+            RenderUtil.renderIcon(this.origLunarLogo, this.x + 1.0F, this.y + 1.0F, this.width, this.height);
         }
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderUtil.renderIcon(this.origLunarLogo, this.xPosition, this.yPosition, this.width, this.height);
+        RenderUtil.renderIcon(this.origLunarLogo, this.x, this.y, this.width, this.height);
 
         for (int i = 0; i < 8; ++i) {
             TwinklingStar currentStar = this.twinklingStars[i];
@@ -92,12 +92,12 @@ public class AnimatedLogoElement extends AbstractElement {
             // draw the animated shadow, if allowed of course.
             if (this.shadow) {
                 GlStateManager.color(0.0F, 0.0F, 0.0F, starOpacity / 5.0F);
-                RenderUtil.renderIcon(starLocations[i], this.xPosition + 1.0F, this.yPosition + 1.0F, this.width, this.height);
+                RenderUtil.renderIcon(starLocations[i], this.x + 1.0F, this.y + 1.0F, this.width, this.height);
             }
 
             // draw the star with the correct opacity
             GlStateManager.color(1.0F, 1.0F, 1.0F, starOpacity);
-            RenderUtil.renderIcon(starLocations[i], this.xPosition, this.yPosition, this.width, this.height);
+            RenderUtil.renderIcon(starLocations[i], this.x, this.y, this.width, this.height);
 
             GlStateManager.popMatrix();
         }
